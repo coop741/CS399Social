@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 class Mood(models.Model):
     """
-    A simple mood model that contains a user description of the mood and an associated color.
+    A simple mood model that contains a user description
+    of the mood and an associated color.
     """
 
     # a description of the mood by the user

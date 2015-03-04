@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import local_apps
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles'
 ]
 
-import local_apps
 INSTALLED_APPS += local_apps.LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (

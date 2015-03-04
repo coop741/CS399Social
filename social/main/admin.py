@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Mood
+from .models.mood import Mood
 
 
 class MoodAdmin(admin.ModelAdmin):
