@@ -1,5 +1,7 @@
+import json
 from django.http import JsonResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
+from django.core import serializers
 from ..models import Mood
 
 
@@ -15,12 +17,11 @@ def mood(request, pk=None):
             return JsonResponse({'error': 'Unauthorized.'}, status=403)
     if request.method == 'GET':
         if pk is None:
-            all_moods = Mood.objects.all()
-            # TODO serialize queryset
-            return JsonResponse({'error': 'Not Implemented'}, status=501)
+            data = serializers.serialize("json", Mood.objects.all())
+            return JsonResponse(json.loads(data), status=200, safe=False)
         else:
-            one_mood = get_object_or_404(Mood, pk=1)
-            # TODO serialize queryset
-            return JsonResponse({'error': 'Not Implemented'}, status=501)
+            one_mood = get_object_or_404(Mood, pk=pk)
+            data = serializers.serialize("json", [one_mood])
+            return JsonResponse(json.loads(data), status=200, safe=False)
 
     return HttpResponseNotFound
