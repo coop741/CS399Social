@@ -4,6 +4,7 @@ from views.home import home
 from views.mood import mood
 from views.feed_user import feed_user
 from views.feed import feed
+from views.about import about
 
 
 urlpatterns = patterns('',
@@ -15,5 +16,6 @@ urlpatterns = patterns('',
                        url(r'^logout$', 'django.contrib.auth.views.logout'),
                        url(r'^user/(?P<user_name>[-\w]+)/mood$', feed_user),
                        url(r'^feed$', feed),
-                       url(r'^$', home)
+                       url(r'^$', home),
+                       url(r'^about$', about)
                        )
