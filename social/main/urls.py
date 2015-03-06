@@ -8,5 +8,7 @@ urlpatterns = patterns('',
                        url(r'^mood$', mood, name='mood'),
                        url(r'^mood/(?P<pk>\d+)', mood, name='mood_pk'),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^login$', 'django.contrib.auth.views.login'),
+                       url(r'^logout$', 'django.contrib.auth.views.logout'),
                        url(r'^$', home)
                        )
