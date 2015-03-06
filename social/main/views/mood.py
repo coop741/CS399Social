@@ -9,9 +9,12 @@ def mood(request, pk=None):
     if request.method == 'POST':
         if request.user.is_authenticated():
             # TODO validate
-            # TODO add user to mood
-            # TODO return created mood object
-            return JsonResponse({'error': 'Not Implemented'}, status=501)
+            data = json.loads(request.POST['data'])
+            description = data['description']
+            m = Mood(user=request.user, description=description)
+            m.save()
+            response_data = serializers.serialize("json", [m])
+            return JsonResponse(json.loads(response_data)[0], status=201, safe=False)
         else:
             # anonymous users are not allowed to post moods
             return JsonResponse({'error': 'Unauthorized.'}, status=403)
@@ -19,11 +22,12 @@ def mood(request, pk=None):
         if pk is None:
             if 'user' in request.GET:
                 # allows getting only moods of user
-                data = serializers.serialize("json",
-                                             Mood.objects.filter(user__id=request.GET['user']))
+                query = Mood.objects.filter(user__id=request.GET['user'])
+                data = serializers.serialize("json", query)
             else:
                 # all moods regardless of user
-                data = serializers.serialize("json", Mood.objects.all())
+                query = Mood.objects.all()
+                data = serializers.serialize("json", query)
             return JsonResponse(json.loads(data), status=200, safe=False)
         else:
             one_mood = get_object_or_404(Mood, pk=pk)
