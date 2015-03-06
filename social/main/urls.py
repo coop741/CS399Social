@@ -5,6 +5,7 @@ from views.mood import mood
 from views.feed_user import feed_user
 from views.feed import feed
 from views.about import about
+from views.signup import signup
 
 
 urlpatterns = patterns('',
@@ -17,5 +18,6 @@ urlpatterns = patterns('',
                        url(r'^user/(?P<user_name>[-\w]+)/mood$', feed_user),
                        url(r'^feed$', feed),
                        url(r'^$', home),
-                       url(r'^about$', about)
+                       url(r'^about$', about),
+                       url(r'^signup$', signup)
                        )
