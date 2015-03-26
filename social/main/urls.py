@@ -6,6 +6,7 @@ from views.feed_user import feed_user
 from views.feed import feed
 from views.about import about
 from views.signup import signup
+from views.signedup import signedup
 
 
 urlpatterns = patterns('',
@@ -19,5 +20,6 @@ urlpatterns = patterns('',
                        url(r'^feed$', feed),
                        url(r'^$', home),
                        url(r'^about$', about),
-                       url(r'^signup$', signup)
+                       url(r'^signup', signup),
+                       url(r'^signedup', signedup)
                        )
