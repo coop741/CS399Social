@@ -11,6 +11,8 @@ $("#submitMood").click(function () {
         },
         function (data) {
             console.log(data);
+            $('#moodModal').modal('hide');
+
         }
     );
 });
