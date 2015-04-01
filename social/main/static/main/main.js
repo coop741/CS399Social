@@ -17,16 +17,18 @@ $("#submitMood").click(function () {
     );
 });
 
+
 function getMoods(username) {
     var url = "/mood";
     if (username) {
         url = url + '?username=' + username;
     }
     $.get(url, function (data) {
-        $('.moods').empty();
         console.log(data);
-        $.each(data, function (index, value) {
-            $('<div class="alert alert-info"/>').html(value.fields.description).appendTo('.moods');
+        $.get('/static/main/templates/moods.mst', function (template) {
+            Mustache.parse(template);
+            var rendered = Mustache.render(template, {moods: data});
+            $('.moods').html(rendered);
         });
     });
 }
