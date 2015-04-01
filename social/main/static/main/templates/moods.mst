@@ -1,0 +1,5 @@
+{{#moods}}
+<p><strong>{{fields.user}}</strong>: {{fields.description}}</p>
+<p> {{fields.created_at}}</p>
+<br />
+{{/moods}}
