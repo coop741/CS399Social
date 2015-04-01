@@ -4,7 +4,34 @@
 {% block content %}
 
     <div class="container">
-        <h3>Hello World!</h3>
+        <br>
+                        <center><h3>What's Your Mood?</h3></center>
+                        <br>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="/static/happy.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="/static/sad.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="/static/angry.png" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+
         <h4><a href="/mood">GET: /mood</a></h4>
         <h4><a href="/mood">GET: /mood/1</a></h4>
         <h4><a href="/mood?username=test">GET: /mood?username=test</a></h4>
