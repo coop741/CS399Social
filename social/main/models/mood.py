@@ -19,3 +19,5 @@ class Mood(models.Model):
 
     # the user that saved their mood
     user = models.ForeignKey(User)
+    # Tried to display username name from User model
+    # User.objects.select_related().filter(username__foreign_attribute__gt=user)
