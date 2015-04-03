@@ -40,13 +40,12 @@ def mood(request, pk=None):
                 # allows getting only moods of user
                 query = Mood.objects.filter(user__id=request.GET['user'])
                 data = serializers.serialize("json", query)
-                return JsonResponse(json.loads(data), status=200, safe=False)
             else:
                 # GET MANY
                 # all moods regardless of user
                 query = Mood.objects.all()
                 data = serializers.serialize("json", query)
-                return JsonResponse(json.loads(data), status=200, safe=False)
+            return JsonResponse(json.loads(data), status=200, safe=False)
         else:
             # GET ONE
             one_mood = get_object_or_404(Mood, pk=pk)
